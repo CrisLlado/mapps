@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33" height="33" viewBox="0 0 33 33">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 1200px;
+        text-anchor: middle;
+        font-family: Montserrat;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <image id="Capa_1" data-name="Capa 1" x="6" y="4" width="21" height="25" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAZCAYAAADe1WXtAAAA0UlEQVRIibXUiw2EIAwG4NbJHYcxboQbhB168dGjlFK0aBMTg/6fFRGEcZFxh5tb+ISIquPE/mBK6SNydESaTP1EHkRE0mNWIZZmiQhBjFUogx7WzMMJbXCD8qveATXM3iIvRkArx2hMM3zQnT5V1ZKaalHkN3R9uNGVPxvNdgplFeC7cyr/kEjJPKNzYql28eecvxFJ517/TRECcys3FB7TXz80txK00OrpV7vU1aB6wx2BustupyPYA7uoB49AF7XgK+B+n3dR+oHMbbhfAPAD6mN1+UiIOLcAAAAASUVORK5CYII="/>
+  <text id="_" data-name="%" class="cls-1" transform="translate(16.5 16.762) scale(0.009 0.009)"><tspan x="0">%</tspan></text>
+</svg>
