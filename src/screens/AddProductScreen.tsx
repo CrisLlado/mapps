@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Text,
   Image,
-  Picker
 } from "react-native";
 import {
   createProduct,
@@ -17,12 +16,14 @@ import {
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
+import { Picker } from "@react-native-picker/picker";
 
 const AddProductScreen = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState<string | null>(null);
+  const [categoria, setCategoria] = useState(""); // Añadido el estado para 'categoria'
   const navigation = useNavigation();
 
   const selectImage = async () => {

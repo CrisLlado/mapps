@@ -12,6 +12,7 @@
     "@react-native-community/geolocation": "^3.0.6",
     "@react-native-firebase/app": "^17.4.3",
     "@react-native-firebase/auth": "^17.4.3",
+    "@react-native-picker/picker": "^2.5.0",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.16",
@@ -33,14 +34,14 @@
     "expo-firebase-performance": "^2.0.0",
     "expo-firebase-remote-config": "^2.0.0",
     "expo-firebase-storage": "^2.0.0",
+    "expo-image-picker": "~14.3.2",
     "expo-location": "~16.1.0",
     "expo-status-bar": "~1.6.0",
     "firebase": "^9.21.0",
     "react": "18.2.0",
     "react-native": "0.72.3",
     "react-native-image-picker": "^5.3.1",
-    "react-native-maps": "1.7.1",
-    "expo-image-picker": "~14.3.2"
+    "react-native-maps": "1.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
