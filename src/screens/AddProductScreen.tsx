@@ -7,8 +7,13 @@ import {
   TouchableOpacity,
   Text,
   Image,
+  Picker
 } from "react-native";
-import { createProduct, uploadImage, updateOffers } from "./../firebase/firebaseAuth";
+import {
+  createProduct,
+  uploadImage,
+  updateOffers,
+} from "./../firebase/firebaseAuth";
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
@@ -123,6 +128,15 @@ const AddProductScreen = () => {
         placeholder="Precio del producto"
         keyboardType="numeric"
       />
+      <Picker
+        selectedValue={categoria}
+        onValueChange={(itemValue) => setCategoria(itemValue)}
+      >
+        <Picker.Item label="Selecciona una categoría" value="" />
+        <Picker.Item label="Restaurantes" value="Restaurantes" />
+        <Picker.Item label="Tiendas" value="Tiendas" />
+        {/* ... otras categorías ... */}
+      </Picker>
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Enviar</Text>
       </TouchableOpacity>
