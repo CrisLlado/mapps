@@ -11,13 +11,14 @@ interface Product {
     latitude: number;
     longitude: number;
   };
+  categoria: string; // Nuevo campo
+  fechaCreacion: firebase.firestore.Timestamp; // Nuevo campo
 }
 
 const firebaseConfig = {
   apiKey: "AIzaSyAxyTBpHDzCPdtRyu6Gkh6iSTo1YfiEuds",
   authDomain: "offerange.firebaseapp.com",
-  databaseURL:
-    "https://offerange-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL: "https://offerange-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "offerange",
   storageBucket: "offerange.appspot.com",
   messagingSenderId: "282494476871",
@@ -92,7 +93,9 @@ export const createProduct = async (
   latitude,
   longitude,
   imageUrl,
-  updateOffers // Agrega updateOffers como argumento
+  categoria, // Nuevo argumento
+  fechaCreacion, // Nuevo argumento
+  updateOffers
 ) => {
   try {
     const currentUser = firebase.auth().currentUser;
@@ -105,6 +108,8 @@ export const createProduct = async (
         location: new firebase.firestore.GeoPoint(latitude, longitude),
         imageUrl,
         userId: currentUser.uid,
+        categoria, // Añade la categoría
+        fechaCreacion, // Añade la fecha de creación
       });
 
       console.log("Producto creado exitosamente");
@@ -129,7 +134,6 @@ export const updateOffers = async (setProducts) => {
   }
 };
 
-
 export const getProducts = async (): Promise<Product[]> => {
   try {
     const snapshot = await firebase.firestore().collection("products").get();
@@ -144,7 +148,9 @@ export const getProducts = async (): Promise<Product[]> => {
         location: {
           latitude: data.location.latitude,
           longitude: data.location.longitude
-        }
+        },
+        categoria: data.categoria, // Añade la categoría
+        fechaCreacion: data.fechaCreacion // Añade la fecha de creación
       }
     });
   } catch (error) {

@@ -28,7 +28,7 @@ const AddProductScreen = () => {
       quality: 1,
     });
 
-    if (!result.cancelled) {
+    if (!result.canceled) {
       setImage(result.uri);
       console.log(result.uri);
     }
@@ -46,6 +46,24 @@ const AddProductScreen = () => {
   };
 
   const handleSubmit = async () => {
+    // Validaciones
+    if (!name.trim()) {
+      alert("Por favor, introduce el nombre del producto.");
+      return;
+    }
+    if (!description.trim()) {
+      alert("Por favor, introduce una descripción para el producto.");
+      return;
+    }
+    if (!price.trim() || isNaN(Number(price))) {
+      alert("Por favor, introduce un precio válido para el producto.");
+      return;
+    }
+    if (!image) {
+      alert("Por favor, selecciona una imagen para el producto.");
+      return;
+    }
+
     let location = await getLocation();
     if (location) {
       let imageUrl = "";
@@ -60,6 +78,8 @@ const AddProductScreen = () => {
         location.coords.latitude,
         location.coords.longitude,
         imageUrl,
+        categoria,
+        fechaCreacion,
         updateOffers // Agrega updateOffers como argumento
       );
 
