@@ -16,7 +16,7 @@ import {
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
-import { Picker } from "@react-native-picker/picker";
+import DropDownPicker from "react-native-dropdown-picker";
 
 const AddProductScreen = () => {
   const [name, setName] = useState("");
@@ -129,15 +129,21 @@ const AddProductScreen = () => {
         placeholder="Precio del producto"
         keyboardType="numeric"
       />
-      <Picker
-        selectedValue={categoria}
-        onValueChange={(itemValue) => setCategoria(itemValue)}
-      >
-        <Picker.Item label="Selecciona una categoría" value="" />
-        <Picker.Item label="Restaurantes" value="Restaurantes" />
-        <Picker.Item label="Tiendas" value="Tiendas" />
-        {/* ... otras categorías ... */}
-      </Picker>
+      <DropDownPicker
+        items={[
+          { label: "Categoría 1", value: "categoria1" },
+          { label: "Categoría 2", value: "categoria2" },
+          // ... otras categorías
+        ]}
+        defaultValue={categoria}
+        containerStyle={{ height: 40 }}
+        style={{ backgroundColor: "#fafafa" }}
+        itemStyle={{
+          justifyContent: "flex-start",
+        }}
+        dropDownStyle={{ backgroundColor: "#fafafa" }}
+        onChangeItem={(item) => setCategoria(item.value)}
+      />
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Enviar</Text>
       </TouchableOpacity>
