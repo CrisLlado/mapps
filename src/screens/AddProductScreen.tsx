@@ -16,14 +16,15 @@ import {
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
-import DropDownPicker from "react-native-dropdown-picker";
+import { RadioButton } from "react-native-paper";
 
 const AddProductScreen = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState<string | null>(null);
-  const [categoria, setCategoria] = useState(""); // Añadido el estado para 'categoria'
+  const [categoria, setCategoria] = useState("categoria1"); // Añadido el estado para 'categoria'
+  const [checked, setChecked] = React.useState('first');
   const navigation = useNavigation();
 
   const selectImage = async () => {
@@ -129,21 +130,19 @@ const AddProductScreen = () => {
         placeholder="Precio del producto"
         keyboardType="numeric"
       />
-      <DropDownPicker
-        items={[
-          { label: "Categoría 1", value: "categoria1" },
-          { label: "Categoría 2", value: "categoria2" },
-          // ... otras categorías
-        ]}
-        defaultValue={categoria}
-        containerStyle={{ height: 40 }}
-        style={{ backgroundColor: "#fafafa" }}
-        itemStyle={{
-          justifyContent: "flex-start",
-        }}
-        dropDownStyle={{ backgroundColor: "#fafafa" }}
-        onChangeItem={(item) => setCategoria(item.value)}
-      />
+      <RadioButton.Group
+        onValueChange={(newValue) => setChecked(newValue)}
+        value={checked}
+      >
+        <View>
+          <Text>First</Text>
+          <RadioButton value="first" />
+        </View>
+        <View>
+          <Text>Second</Text>
+          <RadioButton value="second" />
+        </View>
+      </RadioButton.Group>
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Enviar</Text>
       </TouchableOpacity>
@@ -154,9 +153,8 @@ const AddProductScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     padding: 16,
+    paddingBottom: 200,
   },
   input: {
     width: "100%",
