@@ -4,14 +4,14 @@ import { View, Text, Image, StyleSheet, Button, Platform, Linking } from 'react-
 import firebase from 'firebase/compat';
 
 const OfferDetailScreen = ({ route }) => {
-  const { name, description, price, image, location, userId } = route.params;
+  const { name, description, price, image, location, userId, categoria } = route.params; // Añadido "categoria"
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const userDoc = await firebase.firestore().collection('users').doc(userId).get();
-        if (userDoc.exists) { // Verifica si el documento existe
+        if (userDoc.exists) {
           setUser(userDoc.data());
         } else {
           console.log('No user found with ID: ', userId);
@@ -47,7 +47,8 @@ const OfferDetailScreen = ({ route }) => {
       {image && <Image source={{ uri: image }} style={styles.image} />}
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.description}>{description}</Text>
-      <Text style={styles.price}>{price}</Text>
+      <Text style={styles.price}>{price}€</Text>
+      <Text style={styles.category}>Categoría: {categoria}</Text>
       <Button title="Llevame a la oferta!" onPress={handleDirections} />
     </View>
   );
@@ -76,6 +77,10 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  category: { // Estilo añadido
+    fontSize: 16,
+    marginBottom: 10,
   },
 });
 

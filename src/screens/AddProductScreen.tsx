@@ -84,6 +84,8 @@ const AddProductScreen = () => {
         imageUrl = await uploadImage(image, `${name}_${Date.now()}`);
       }
 
+      const fechaCreacion = new Date().toISOString(); // Generar la fecha actual
+
       createProduct(
         name,
         description,
@@ -91,8 +93,8 @@ const AddProductScreen = () => {
         location.coords.latitude,
         location.coords.longitude,
         imageUrl,
-        categoria,
-        fechaCreacion,
+        selectedCategory,
+        fechaCreacion, // Usar la fecha generada
         updateOffers // Agrega updateOffers como argumento
       );
 

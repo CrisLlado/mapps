@@ -125,14 +125,14 @@ export const createProduct = async (
   }
 };
 
-export const updateOffers = async (setProducts) => {
+export async function updateOffers(setProducts) {
   try {
     const products = await getProducts();
     setProducts(products);
   } catch (error) {
     console.error("Error al actualizar las ofertas: ", error);
   }
-};
+}
 
 export const getProducts = async (): Promise<Product[]> => {
   try {
