@@ -12,6 +12,11 @@ const CATEGORIES = [
 const FilterScreen = ({ navigation }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    navigation.navigate('MapScreen', { selectedCategory: category });
+  };
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Selecciona una categoría para filtrar</Text>
