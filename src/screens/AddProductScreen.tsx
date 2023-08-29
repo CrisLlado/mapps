@@ -18,13 +18,19 @@ import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
 import { RadioButton } from "react-native-paper";
 
+const CATEGORIES = [
+  { label: "Restaurantes", value: "restaurantes" },
+  { label: "Electrónica", value: "electronica" },
+  { label: "Ropa", value: "ropa" },
+  // ... otras categorías que desees añadir
+];
+
 const AddProductScreen = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState<string | null>(null);
-  const [categoria, setCategoria] = useState("categoria1"); // Añadido el estado para 'categoria'
-  const [checked, setChecked] = React.useState('first');
+  const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0].value);
   const navigation = useNavigation();
 
   const selectImage = async () => {
@@ -131,17 +137,15 @@ const AddProductScreen = () => {
         keyboardType="numeric"
       />
       <RadioButton.Group
-        onValueChange={(newValue) => setChecked(newValue)}
-        value={checked}
+        onValueChange={(newValue) => setSelectedCategory(newValue)}
+        value={selectedCategory}
       >
-        <View>
-          <Text>First</Text>
-          <RadioButton value="first" />
-        </View>
-        <View>
-          <Text>Second</Text>
-          <RadioButton value="second" />
-        </View>
+        {CATEGORIES.map((category) => (
+          <View key={category.value} style={{ flexDirection: "row", alignItems: "center" }}>
+            <RadioButton value={category.value} />
+            <Text>{category.label}</Text>
+          </View>
+        ))}
       </RadioButton.Group>
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Enviar</Text>
