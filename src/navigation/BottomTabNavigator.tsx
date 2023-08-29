@@ -7,6 +7,7 @@ import SettingsScreen from "../screens/SettingsScreen";
 import SavedOffersScreen from "../screens/SavedOffersScreen";
 import AddProductScreen from "../screens/AddProductScreen";
 import { Image } from "react-native";
+import FilterScreen from "../screens/FilterScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,6 +31,13 @@ const BottomTabNavigator: React.FC = () => {
         component={AddProductScreen}
         options={{
           title: "Añadir producto",
+        }}
+      />
+      <Tab.Screen
+        name="Filters"
+        component={FilterScreen}
+        options={{
+          title: "Filtros",
         }}
       />
       <Tab.Screen

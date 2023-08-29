@@ -48,7 +48,7 @@ const OfferDetailScreen = ({ route }) => {
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.description}>{description}</Text>
       <Text style={styles.price}>{price}€</Text>
-      <Text style={styles.category}>Categoría: {categoria}</Text>
+      {categoria && <Text style={styles.category}>Categoría: {categoria}</Text>}
       <Button title="Llevame a la oferta!" onPress={handleDirections} />
     </View>
   );

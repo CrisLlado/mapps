@@ -12,6 +12,7 @@ interface Product {
   price: number;
   image: string;
   userId: string;
+  categoria: string;
   location: {
     latitude: number;
     longitude: number;
@@ -69,6 +70,7 @@ const MapScreen: React.FC = () => {
                 price: product.price,
                 image: product.image,
                 userId: product.userId,
+                categoria: product.categoria,
                 location: product.location,
               })
             }
